@@ -17,13 +17,13 @@ class User:
         self.updated_at = data['updated_at']
 
 # ---------------------------------------------------
-# VALIDATION
+# VALIDATIONS
 
     @staticmethod
     def is_valid_user(data):
         is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        results = connectToMySQL('did_you_know').query_db(query,data)
+        results = connectToMySQL('dish_draw').query_db(query,data)
         if len(results) >= 1:
             flash("Email already taken.")
             is_valid = False
